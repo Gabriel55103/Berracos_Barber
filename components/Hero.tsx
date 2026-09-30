@@ -1,64 +1,31 @@
-export default function Hero() {
-  const gif =
-    "https://upload.wikimedia.org/wikipedia/commons/3/36/Barber-pole-02.gif";
+"use client";
 
+type HeroProps = {
+  cambiarVista: (vista: string) => void;
+};
+
+export default function Hero({ cambiarVista }: HeroProps) {
   return (
-    <section className="hero" id="inicio">
+    <section className="hero">
+      <div className="gif-fondo">
+        <iframe
+          src="https://tenor.com/embed/your-gif-id"
+          frameBorder="0"
+          allowFullScreen
+        />
+      </div>
+
       <div className="hero-overlay"></div>
 
-      <img
-        src={gif}
-        alt="Barra de barbería animada"
-        className="gif gif-1"
-      />
-
-      <img
-        src={gif}
-        alt="Barra de barbería animada"
-        className="gif gif-2"
-      />
-
-      <img
-        src={gif}
-        alt="Barra de barbería animada"
-        className="gif gif-3"
-      />
-
-      <img
-        src={gif}
-        alt="Barra de barbería animada"
-        className="gif gif-4"
-      />
-
-      <img
-        src={gif}
-        alt="Barra de barbería animada"
-        className="gif gif-5"
-      />
-
-      <img
-        src={gif}
-        alt="Barra de barbería animada"
-        className="gif gif-6"
-      />
-
-      <img
-        src={gif}
-        alt="Barra de barbería animada"
-        className="gif gif-7"
-      />
-
-      <img
-        src={gif}
-        alt="Barra de barbería animada"
-        className="gif gif-8"
-      />
-
       <div className="hero-contenido">
-        <span className="hero-etiqueta">BARBER SHOP</span>
+        <div className="hero-etiqueta">
+          BARBER SHOP
+        </div>
 
         <h1>
-          BERRACOS <span>BARBER</span>
+          BERRACOS
+          <br />
+          <span>BARBER</span>
         </h1>
 
         <p>
@@ -68,13 +35,60 @@ export default function Hero() {
         </p>
 
         <div className="hero-botones">
-          <a href="#reservar" className="boton">
+          <button
+            type="button"
+            className="boton"
+            onClick={() => cambiarVista("reservar")}
+          >
             RESERVAR CITA
-          </a>
+          </button>
 
-          <a href="#servicios" className="boton hero-boton-secundario">
-            VER SERVICIOS
-          </a>
+          <button
+            type="button"
+            className="boton hero-boton-secundario"
+            onClick={() => cambiarVista("cortes")}
+          >
+            VER CORTES
+          </button>
+        </div>
+
+        <div className="inicio-navegacion">
+          <button
+            type="button"
+            onClick={() => cambiarVista("servicios")}
+          >
+            SERVICIOS
+          </button>
+
+          <button
+            type="button"
+            onClick={() => cambiarVista("barberos")}
+          >
+            BARBEROS
+          </button>
+
+          <button
+            type="button"
+            onClick={() => cambiarVista("cortes")}
+          >
+            CORTES
+          </button>
+
+          <button
+            type="button"
+            onClick={() => cambiarVista("calendario")}
+          >
+            DISPONIBILIDAD
+          </button>
+
+          <button
+            type="button"
+            onClick={() => cambiarVista("ubicacion")}
+          >
+            UBICACIÓN
+          </button>
+
+          
         </div>
       </div>
     </section>

@@ -1,29 +1,76 @@
-export default function Navbar() {
-  return (
-    <header className="navbar">
-      <a href="#inicio" className="navbar-logo">
-        BERRACOS <span>BARBER</span>
-      </a>
+"use client";
 
-      <nav>
-        <ul className="navbar-links">
-          <li>
-            <a href="#inicio">Inicio</a>
-          </li>
-          <li>
-            <a href="#servicios">Servicios</a>
-          </li>
-          <li>
-            <a href="#barberos">Barberos</a>
-          </li>
-          <li>
-            <a href="#reservar">Reservar</a>
-          </li>
-          <li>
-            <a href="#ubicacion">Ubicación</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
+type NavbarProps = {
+  cambiarVista: (vista: string) => void;
+};
+
+export default function Navbar({
+  cambiarVista,
+}: NavbarProps) {
+  return (
+    <nav className="navbar">
+      <button
+        className="navbar-logo"
+        onClick={() => cambiarVista("inicio")}
+      >
+        BERRACOS<span>BARBER</span>
+      </button>
+
+      <ul className="navbar-links">
+        <li>
+          <button onClick={() => cambiarVista("inicio")}>
+            INICIO
+          </button>
+        </li>
+
+        <li>
+          <button onClick={() => cambiarVista("servicios")}>
+            SERVICIOS
+          </button>
+        </li>
+
+        <li>
+          <button onClick={() => cambiarVista("barberos")}>
+            BARBEROS
+          </button>
+        </li>
+
+        <li>
+          <button onClick={() => cambiarVista("cortes")}>
+            CORTES
+          </button>
+        </li>
+
+        <li>
+          <button onClick={() => cambiarVista("calendario")}>
+            DISPONIBILIDAD
+          </button>
+        </li>
+
+        <li>
+          <button onClick={() => cambiarVista("ubicacion")}>
+            UBICACIÓN
+          </button>
+        </li>
+
+        <li>
+          <button
+            className="boton"
+            onClick={() => cambiarVista("reservar")}
+          >
+            RESERVAR
+          </button>
+        </li>
+
+        <li>
+          <button
+            className="navbar-login"
+            onClick={() => cambiarVista("login")}
+          >
+            INICIAR SESIÓN
+          </button>
+        </li>
+      </ul>
+    </nav>
   );
 }

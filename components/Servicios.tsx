@@ -1,47 +1,71 @@
-const servicios = [
-  {
-    icono: "✂",
-    nombre: "Corte de Cabello",
-    descripcion:
-      "Corte personalizado realizado por nuestros barberos profesionales.",
-    precio: "$250",
-  },
-  {
-    icono: "🪒",
-    nombre: "Arreglo de Barba",
-    descripcion:
-      "Perfilado, recorte y acabado de barba para un estilo impecable.",
-    precio: "$180",
-  },
-  {
-    icono: "★",
-    nombre: "Corte + Barba",
-    descripcion:
-      "Servicio completo de corte de cabello y arreglo profesional de barba.",
-    precio: "$380",
-  },
-];
+"use client";
 
-export default function Servicios() {
+type ServiciosProps = {
+  cambiarVista: (vista: string) => void;
+};
+
+export default function Servicios({
+  cambiarVista,
+}: ServiciosProps) {
   return (
-    <section className="seccion servicios" id="servicios">
+    <section className="seccion servicios">
       <div className="encabezado">
         <span>SERVICES</span>
+
         <h2>NUESTROS SERVICIOS</h2>
+
+        <p>
+          Todo lo que necesitas para salir con un estilo
+          diferente.
+        </p>
       </div>
 
       <div className="servicios-grid">
-        {servicios.map((servicio) => (
-          <article className="servicio-card" key={servicio.nombre}>
-            <div className="servicio-icono">{servicio.icono}</div>
+        <article className="servicio-card">
+          <div className="servicio-icono">✂</div>
 
-            <h3>{servicio.nombre}</h3>
+          <h3>Corte de cabello</h3>
 
-            <p>{servicio.descripcion}</p>
+          <p>
+            Cortes modernos y clásicos realizados por
+            nuestros barberos.
+          </p>
+        </article>
 
-            <strong>{servicio.precio}</strong>
-          </article>
-        ))}
+        <article className="servicio-card">
+          <div className="servicio-icono">🧔</div>
+
+          <h3>Barba</h3>
+
+          <p>
+            Perfilado y arreglo de barba con acabado
+            profesional.
+          </p>
+        </article>
+
+        <article className="servicio-card">
+          <div className="servicio-icono">★</div>
+
+          <h3>Corte + Barba</h3>
+
+          <p>
+            El servicio completo para renovar tu estilo.
+          </p>
+        </article>
+      </div>
+
+      <div
+        style={{
+          textAlign: "center",
+          marginTop: "40px",
+        }}
+      >
+        <button
+          className="boton"
+          onClick={() => cambiarVista("reservar")}
+        >
+          RESERVAR CITA
+        </button>
       </div>
     </section>
   );

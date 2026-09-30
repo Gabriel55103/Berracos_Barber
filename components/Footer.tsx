@@ -1,41 +1,92 @@
-export default function Footer() {
+"use client";
+
+type FooterProps = {
+  cambiarVista: (vista: string) => void;
+};
+
+export default function Footer({
+  cambiarVista,
+}: FooterProps) {
   return (
     <footer className="footer">
       <div className="footer-contenedor">
         <div>
-          <a href="#inicio" className="footer-logo">
-            BERRACOS <span>BARBER</span>
-          </a>
+          <div className="footer-logo">
+            BERRACOS<span>BARBER</span>
+          </div>
 
           <p className="footer-descripcion">
-            Estilo, precisión y actitud. Tu imagen, nuestro trabajo.
+            Cortes con estilo, precisión y actitud.
+            Una barbería creada para quienes buscan
+            algo diferente.
           </p>
         </div>
 
-        <div className="footer-links">
-          <h3>ENLACES</h3>
+        <div>
+          <h3>NAVEGACIÓN</h3>
 
-          <a href="#inicio">Inicio</a>
-          <a href="#servicios">Servicios</a>
-          <a href="#barberos">Barberos</a>
-          <a href="#reservar">Reservar</a>
-          <a href="#ubicacion">Ubicación</a>
+          <div className="footer-links">
+            <button
+              onClick={() => cambiarVista("inicio")}
+            >
+              Inicio
+            </button>
+
+            <button
+              onClick={() => cambiarVista("servicios")}
+            >
+              Servicios
+            </button>
+
+            <button
+              onClick={() => cambiarVista("cortes")}
+            >
+              Cortes
+            </button>
+
+            <button
+              onClick={() => cambiarVista("calendario")}
+            >
+              Disponibilidad
+            </button>
+          </div>
         </div>
 
-        <div className="footer-contacto">
+        <div>
           <h3>CONTACTO</h3>
 
-          <p>Av. Principal #00-00</p>
-          <p>Libres, Puebla, México</p>
-          <p>Lunes a sábado</p>
-          <p>9:00 AM - 8:00 PM</p>
+          <div className="footer-contacto">
+            <p>
+              📍 Libres, Puebla, México
+            </p>
+
+            <p>
+              📞 222 000 0000
+            </p>
+
+            <p>
+              Lunes a sábado
+              <br />
+              9:00 AM - 8:00 PM
+            </p>
+
+            <button
+              className="boton"
+              onClick={() =>
+                cambiarVista("reservar")
+              }
+            >
+              RESERVAR
+            </button>
+          </div>
         </div>
       </div>
 
       <div className="footer-bottom">
-        <span>© 2026 BERRACOS BARBER</span>
-
-        <span>Todos los derechos reservados</span>
+        <p>
+          © 2026 BERRACOS BARBER · Todos los derechos
+          reservados
+        </p>
       </div>
     </footer>
   );

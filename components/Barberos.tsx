@@ -1,3 +1,5 @@
+"use client";
+
 const barberos = [
   {
     nombre: "Jhonny",
@@ -15,19 +17,42 @@ const barberos = [
 
 export default function Barberos() {
   return (
-    <section className="seccion barberos" id="barberos">
+    <section className="seccion barberos">
       <div className="encabezado">
         <span>THE TEAM</span>
+
         <h2>NUESTROS BARBEROS</h2>
+
+        <p>
+          Profesionales preparados para darle forma a tu
+          estilo.
+        </p>
       </div>
 
       <div className="barberos-grid">
-        {barberos.map((barbero) => (
-          <article className="barbero-card" key={barbero.nombre}>
-            <div className="barbero-imagen"></div>
+        {barberos.map((barbero, index) => (
+          <article
+            className="barbero-card"
+            key={barbero.nombre}
+          >
+            <div
+              className="barbero-imagen"
+              style={{
+                backgroundImage: `
+                  linear-gradient(
+                    180deg,
+                    transparent 40%,
+                    rgba(2, 6, 11, 0.9)
+                  ),
+                  url("https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=800&q=80")
+                `,
+              }}
+            />
 
             <div className="barbero-info">
-              <span>BARBER</span>
+              <span>
+                BARBER 0{index + 1}
+              </span>
 
               <h3>{barbero.nombre}</h3>
 
