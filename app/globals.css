@@ -10,43 +10,20 @@ body {
   overflow-y: auto;
 }
 
-/* FONDO CON IMAGEN DIFUMINADA */
-body::before {
-  content: "";
-  position: fixed;
-  inset: -25px;
-  z-index: -2;
-
-  background-image: url("https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1920&q=85");
-
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-
-  filter: blur(18px);
-  transform: scale(1.05);
-}
-
-/* CAPA OSCURA */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-
-  background: rgba(2, 6, 11, 0.65);
-
-  pointer-events: none;
-}
-
-/* CONTENIDO */
-.app {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-}
 * {
   box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(2, 6, 11, 0.82),
+      rgba(2, 6, 11, 0.94)
+    ),
+    url("https://img.magnific.com/vector-premium/patron-costura-industria-barbero-es-monocromatico_153969-8939.jpg?semt=ais_hybrid&w=740&q=80")
+      center / cover fixed;
 }
 
 a {
@@ -68,7 +45,10 @@ button {
   background: #2fa4ff;
   color: #ffffff;
 }
+
 .app {
+  position: relative;
+  z-index: 10;
   width: 100%;
   min-height: 100vh;
 }
@@ -85,8 +65,8 @@ button {
   align-items: center;
   justify-content: space-between;
   padding: 0 60px;
-  background: rgba(2, 6, 11, 0.9);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(2, 6, 11, 0.92);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(15px);
 }
 
@@ -163,6 +143,8 @@ button {
 }
 
 .seccion {
+  position: relative;
+  z-index: 10;
   width: 100%;
   max-width: 1400px;
   min-height: calc(100vh - 75px);
@@ -223,6 +205,7 @@ button {
 
 .hero {
   position: relative;
+  z-index: 10;
   width: 100%;
   height: 100vh;
   min-height: 100vh;
@@ -230,7 +213,21 @@ button {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: #02060b;
+  background: transparent;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -40px;
+  z-index: 0;
+  background-image: url("https://img.magnific.com/vector-premium/patron-costura-industria-barbero-es-monocromatico_153969-8939.jpg?semt=ais_hybrid&w=740&q=80");
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat;
+  filter: blur(5px);
+  transform: scale(1.06);
+  opacity: 0.25;
 }
 
 .gif-fondo {
@@ -238,7 +235,7 @@ button {
   inset: -100px;
   z-index: 1;
   overflow: hidden;
-  opacity: 0.22;
+  opacity: 0.08;
   filter: blur(12px) grayscale(0.25);
   transform: scale(1.08);
   pointer-events: none;
@@ -264,14 +261,14 @@ button {
   background:
     radial-gradient(
       circle at center,
-      rgba(2, 10, 18, 0.35),
-      rgba(2, 6, 11, 0.88)
+      rgba(2, 10, 18, 0.25),
+      rgba(2, 6, 11, 0.55)
     ),
     linear-gradient(
       90deg,
-      rgba(1, 7, 13, 0.85),
-      rgba(1, 7, 13, 0.45),
-      rgba(1, 7, 13, 0.85)
+      rgba(1, 7, 13, 0.6),
+      rgba(1, 7, 13, 0.25),
+      rgba(1, 7, 13, 0.6)
     );
 }
 
@@ -431,14 +428,14 @@ button {
   color: #2fa4ff;
 }
 
-.servicios {
-  background:
-    radial-gradient(
-      circle at 50% 0%,
-      rgba(47, 164, 255, 0.08),
-      transparent 40%
-    ),
-    #02060b;
+.servicios,
+.barberos,
+.cortes,
+.reservacion,
+.calendario-seccion,
+.ubicacion-seccion,
+.login-seccion {
+  background: transparent;
 }
 
 .servicios-grid {
@@ -451,7 +448,7 @@ button {
   position: relative;
   padding: 35px;
   overflow: hidden;
-  background: linear-gradient(145deg, #0b1c2e, #06101b);
+  background: #0b1c2e;
   border: 1px solid rgba(47, 164, 255, 0.15);
   border-radius: 18px;
   transition: 0.3s ease;
@@ -488,10 +485,6 @@ button {
   color: #8fa3b8;
   font-size: 14px;
   line-height: 1.7;
-}
-
-.barberos {
-  background: #050b12;
 }
 
 .barberos-grid {
@@ -552,11 +545,6 @@ button {
   font-size: 14px;
 }
 
-.cortes {
-  position: relative;
-  background: #02060b;
-}
-
 .cortes-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -569,7 +557,7 @@ button {
   min-height: 280px;
   padding: 30px;
   overflow: hidden;
-  background: linear-gradient(145deg, #0d243c, #06111e);
+  background: #0d243c;
   border: 1px solid rgba(47, 164, 255, 0.25);
   border-radius: 20px;
   transition:
@@ -661,16 +649,6 @@ button {
   letter-spacing: 2px;
 }
 
-.reservacion {
-  background:
-    radial-gradient(
-      circle at 50% 100%,
-      rgba(47, 164, 255, 0.08),
-      transparent 40%
-    ),
-    #050b12;
-}
-
 .reservacion-contenedor {
   display: grid;
   grid-template-columns: 1fr 0.8fr;
@@ -714,7 +692,7 @@ button {
   height: 48px;
   padding: 0 15px;
   outline: none;
-  background: #040b12;
+  background: rgba(4, 11, 18, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   color: #ffffff;
@@ -751,8 +729,8 @@ button {
 
 .disponibilidad {
   padding: 40px;
-  background: linear-gradient(145deg, #0d243c, #06111e);
-  border: 1px solid rgba(47, 164, 255, 0.2);
+  background: #081522;
+  border: 1px solid rgba(47, 164, 255, 0.18);
   border-radius: 20px;
 }
 
@@ -769,18 +747,23 @@ button {
 }
 
 .calendario-seccion {
+  position: relative;
+  z-index: 10;
+  width: 100%;
   min-height: calc(100vh - 75px);
-  padding: 110px 7% 90px;
-  background: #02060b;
+  padding: 110px 5% 80px;
 }
 
 .calendario-encabezado {
+  width: 100%;
   max-width: 850px;
-  margin: 0 auto 55px;
+  margin: 0 auto 50px;
   text-align: center;
 }
 
 .calendario-encabezado > span {
+  display: block;
+  margin-bottom: 12px;
   color: #2fa4ff;
   font-size: 12px;
   font-weight: 800;
@@ -788,17 +771,18 @@ button {
 }
 
 .calendario-encabezado h1 {
-  margin: 14px 0 12px;
+  margin: 0 0 12px;
   color: #ffffff;
   font-size: 48px;
   font-weight: 800;
-  letter-spacing: 1px;
+  line-height: 1.1;
 }
 
 .calendario-encabezado p {
   margin: 0;
   color: #8fa2b5;
   font-size: 16px;
+  line-height: 1.6;
 }
 
 .calendario-contenedor {
@@ -806,37 +790,38 @@ button {
   max-width: 1250px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
+  grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
   gap: 30px;
+  align-items: start;
 }
 
 .calendario-principal,
 .calendario-horarios {
-  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
   padding: 32px;
   border: 1px solid rgba(47, 164, 255, 0.22);
   border-radius: 14px;
   background: #07121e;
-}
-
-.calendario-principal {
-  min-width: 0;
+  box-sizing: border-box;
 }
 
 .calendario-horarios {
   min-height: 520px;
-  background: linear-gradient(145deg, #0c2339, #07121e);
+  background: #0c2339;
 }
 
 .calendario-navegacion {
+  width: 100%;
   display: grid;
-  grid-template-columns: 50px 1fr 50px;
+  grid-template-columns: 50px minmax(0, 1fr) 50px;
   align-items: center;
   gap: 15px;
   margin-bottom: 30px;
 }
 
 .calendario-navegacion > div {
+  min-width: 0;
   text-align: center;
 }
 
@@ -851,16 +836,26 @@ button {
   margin: 7px 0 0;
   color: #ffffff;
   font-size: 21px;
+  font-weight: 800;
+  white-space: nowrap;
 }
 
 .calendario-flecha {
   width: 50px;
   height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  appearance: none;
+  -webkit-appearance: none;
   border: 1px solid rgba(47, 164, 255, 0.35);
   border-radius: 9px;
-  background: #0b1d2f;
+  background: rgba(11, 29, 47, 0.88);
   color: #2fa4ff;
   font-size: 25px;
+  line-height: 1;
   cursor: pointer;
   transition: 0.3s ease;
 }
@@ -871,13 +866,15 @@ button {
 }
 
 .calendario-semana {
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 9px;
   margin-bottom: 9px;
 }
 
 .calendario-semana span {
+  min-width: 0;
   padding: 8px 0;
   color: #2fa4ff;
   font-size: 11px;
@@ -887,16 +884,23 @@ button {
 }
 
 .calendario-grid {
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 9px;
 }
 
 .calendario-dia {
+  width: 100%;
+  min-width: 0;
   min-height: 78px;
   box-sizing: border-box;
   padding: 10px 6px;
+  margin: 0;
   border-radius: 11px;
+  font: inherit;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .calendario-dia-disponible {
@@ -917,7 +921,8 @@ button {
   transform: translateY(-2px);
 }
 
-.calendario-dia-disponible span {
+.calendario-dia-disponible span,
+.calendario-dia-pasado span {
   font-size: 16px;
   font-weight: 700;
 }
@@ -931,16 +936,15 @@ button {
 }
 
 .calendario-dia-pasado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   border: 1px solid #15222e;
   background: #08111a;
   color: #394653;
   cursor: not-allowed;
   opacity: 0.6;
-}
-
-.calendario-dia-pasado span {
-  font-size: 16px;
-  font-weight: 700;
 }
 
 .calendario-dia-hoy {
@@ -966,9 +970,11 @@ button {
 
 .calendario-dia-vacio {
   visibility: hidden;
+  pointer-events: none;
 }
 
 .calendario-leyenda {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -990,6 +996,7 @@ button {
 .leyenda-punto {
   width: 8px;
   height: 8px;
+  flex-shrink: 0;
   border-radius: 50%;
 }
 
@@ -1007,8 +1014,8 @@ button {
 }
 
 .calendario-sin-seleccion {
+  width: 100%;
   min-height: 450px;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1056,18 +1063,21 @@ button {
 }
 
 .horarios-grid {
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
 }
 
 .horario-boton {
+  min-width: 0;
   min-height: 65px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 5px;
+  padding: 8px;
   border: 1px solid #21415a;
   border-radius: 8px;
   background: #091827;
@@ -1150,131 +1160,6 @@ button {
   transform: translateY(-2px);
 }
 
-.calendario-dias {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 10px;
-}
-
-.dia-vacio {
-  min-height: 90px;
-}
-
-.dia-calendario {
-  position: relative;
-  min-height: 90px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 7px;
-  padding: 12px 8px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.025);
-  color: #ffffff;
-  transition: 0.3s ease;
-}
-
-.dia-calendario strong {
-  color: #ffffff;
-  font-size: 20px;
-}
-
-.dia-calendario span {
-  font-size: 8px;
-  font-weight: 800;
-  letter-spacing: 1px;
-}
-
-.dia-disponible {
-  border-color: rgba(47, 164, 255, 0.3);
-  background: rgba(47, 164, 255, 0.06);
-  cursor: pointer;
-}
-
-.dia-disponible span {
-  color: #2fa4ff;
-}
-
-.dia-disponible:hover {
-  transform: translateY(-3px);
-  background: rgba(47, 164, 255, 0.1);
-  border-color: #2fa4ff;
-  box-shadow: 0 10px 25px rgba(47, 164, 255, 0.12);
-}
-
-.dia-ocupado {
-  background: rgba(255, 255, 255, 0.02);
-  opacity: 0.55;
-  cursor: not-allowed;
-}
-
-.dia-ocupado span {
-  color: #718191;
-}
-
-.dia-hoy {
-  box-shadow: 0 0 0 2px #2fa4ff;
-}
-
-.dia-hoy strong {
-  color: #2fa4ff;
-}
-
-.horarios-dia {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 5px;
-  margin-top: 3px;
-}
-
-.hora-disponible,
-.hora-ocupada {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 48px;
-  min-height: 24px;
-  padding: 3px 6px;
-  border-radius: 5px;
-  font-size: 8px;
-  font-weight: 800;
-  letter-spacing: 0.3px;
-}
-
-.hora-disponible {
-  border: 1px solid rgba(47, 164, 255, 0.35);
-  background: rgba(47, 164, 255, 0.1);
-  color: #2fa4ff;
-  cursor: pointer;
-  transition: 0.2s ease;
-}
-
-.hora-disponible:hover {
-  background: #2fa4ff;
-  border-color: #2fa4ff;
-  color: #ffffff;
-  transform: translateY(-2px);
-}
-
-.hora-disponible.seleccionada {
-  background: #2fa4ff;
-  border-color: #2fa4ff;
-  color: #ffffff;
-  box-shadow: 0 0 0 2px rgba(47, 164, 255, 0.2);
-}
-
-.hora-ocupada {
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  background: rgba(255, 255, 255, 0.025);
-  color: #536473;
-  text-decoration: line-through;
-  opacity: 0.6;
-}
-
 .calendario-acciones {
   margin-top: 25px;
   padding: 30px;
@@ -1315,6 +1200,7 @@ button {
   padding: 45px;
   background: #07101a;
   border: 1px solid #16283a;
+  border-radius: 18px;
   text-align: center;
 }
 
@@ -1388,11 +1274,6 @@ button {
   background: transparent;
   color: #2fa4ff;
   transform: translateY(-3px);
-}
-
-.ubicacion-seccion {
-  position: relative;
-  background: #02060b;
 }
 
 .ubicacion-card {
@@ -1521,7 +1402,6 @@ button {
   background: rgba(4, 18, 32, 0.9);
   border: 1px solid rgba(47, 164, 255, 0.35);
   border-radius: 15px;
-  backdrop-filter: blur(8px);
   text-align: center;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
 }
@@ -1551,13 +1431,9 @@ button {
   width: 100%;
   padding: 70px 30px;
   box-sizing: border-box;
-  background:
-    radial-gradient(
-      circle at center,
-      rgba(47, 164, 255, 0.08),
-      transparent 55%
-    ),
-    #02060b;
+  background: #081522;
+  border-top: 1px solid rgba(47, 164, 255, 0.12);
+  border-bottom: 1px solid rgba(47, 164, 255, 0.12);
 }
 
 .inicio-accesos-contenido {
@@ -1604,7 +1480,7 @@ button {
   padding: 0 22px;
   border: 1px solid rgba(47, 164, 255, 0.35);
   border-radius: 8px;
-  background: rgba(47, 164, 255, 0.06);
+  background: #0a1d2f;
   color: #ffffff;
   font-size: 11px;
   font-weight: 800;
@@ -1632,9 +1508,11 @@ button {
 
 .footer {
   position: relative;
+  z-index: 10;
   padding: 70px 60px 30px;
-  background: #010407;
+  background: rgba(1, 4, 7, 0.9);
   border-top: 1px solid rgba(47, 164, 255, 0.12);
+  backdrop-filter: blur(12px);
 }
 
 .footer-contenedor {
@@ -1728,7 +1606,6 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #02060b;
 }
 
 .login-contenedor {
@@ -1789,7 +1666,7 @@ button {
   width: 100%;
   box-sizing: border-box;
   padding: 14px 15px;
-  background: #02060b;
+  background: rgba(2, 6, 11, 0.9);
   border: 1px solid #1d2b3a;
   border-radius: 6px;
   color: #ffffff;
@@ -2053,7 +1930,7 @@ button {
   }
 
   .gif-fondo {
-    opacity: 0.18;
+    opacity: 0.05;
     filter: blur(10px) grayscale(0.3);
   }
 
@@ -2118,70 +1995,87 @@ button {
   }
 
   .calendario-seccion {
-    padding: 100px 20px 60px;
+    min-height: calc(100vh - 65px);
+    padding: 95px 15px 50px;
+  }
+
+  .calendario-encabezado {
+    margin-bottom: 30px;
   }
 
   .calendario-encabezado h1 {
     font-size: 36px;
   }
 
+  .calendario-encabezado p {
+    font-size: 14px;
+  }
+
+  .calendario-contenedor {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
   .calendario-principal,
   .calendario-horarios {
-    padding: 20px;
+    padding: 18px;
+  }
+
+  .calendario-navegacion {
+    grid-template-columns: 42px minmax(0, 1fr) 42px;
+    gap: 8px;
+  }
+
+  .calendario-flecha {
+    width: 42px;
+    height: 42px;
+    font-size: 21px;
+  }
+
+  .calendario-navegacion h2 {
+    font-size: 17px;
+  }
+
+  .calendario-semana,
+  .calendario-grid {
+    gap: 5px;
+  }
+
+  .calendario-semana span {
+    padding: 6px 0;
+    font-size: 8px;
   }
 
   .calendario-dia {
-    min-height: 60px;
+    min-height: 58px;
+    padding: 6px 2px;
+  }
+
+  .calendario-dia-disponible span,
+  .calendario-dia-pasado span {
+    font-size: 14px;
   }
 
   .calendario-dia-disponible small {
     display: none;
   }
 
-  .calendario-grid,
-  .calendario-semana {
-    gap: 5px;
+  .calendario-leyenda {
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 17px;
+  }
+
+  .calendario-leyenda div {
+    font-size: 9px;
   }
 
   .horarios-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .calendario-dias {
-    gap: 5px;
-  }
-
-  .dia-calendario,
-  .dia-vacio {
-    min-height: 75px;
-  }
-
-  .dia-calendario {
-    padding: 8px 5px;
-  }
-
-  .dia-calendario strong {
-    font-size: 16px;
-  }
-
-  .dia-calendario span {
-    font-size: 7px;
-  }
-
-  .horarios-dia {
-    gap: 3px;
-  }
-
-  .hora-disponible,
-  .hora-ocupada {
-    min-width: 38px;
-    min-height: 20px;
-    padding: 2px 4px;
-    font-size: 7px;
-  }
-
-  .calendario-leyenda {
-    gap: 15px;
+  .horario-boton {
+    min-height: 58px;
   }
 
   .calendario-acciones {
@@ -2331,34 +2225,40 @@ button {
   }
 
   .calendario-seccion {
-    padding: 90px 12px 50px;
+    padding: 90px 10px 45px;
   }
 
   .calendario-encabezado h1 {
     font-size: 30px;
   }
 
-  .calendario-encabezado p {
-    font-size: 14px;
+  .calendario-principal,
+  .calendario-horarios {
+    padding: 14px;
   }
 
   .calendario-navegacion {
-    grid-template-columns: 42px 1fr 42px;
-    gap: 8px;
+    grid-template-columns: 36px minmax(0, 1fr) 36px;
   }
 
   .calendario-flecha {
-    width: 42px;
-    height: 42px;
+    width: 36px;
+    height: 36px;
+    font-size: 19px;
   }
 
   .calendario-navegacion h2 {
-    font-size: 16px;
+    font-size: 15px;
+  }
+
+  .calendario-semana,
+  .calendario-grid {
+    gap: 3px;
   }
 
   .calendario-dia {
     min-height: 48px;
-    padding: 5px 2px;
+    padding: 4px 1px;
   }
 
   .calendario-dia-disponible span,
@@ -2367,54 +2267,10 @@ button {
   }
 
   .calendario-semana span {
-    font-size: 8px;
+    font-size: 7px;
   }
 
-  .calendario-leyenda {
-    gap: 12px;
-  }
-
-  .calendario-principal {
-    padding: 15px;
-  }
-
-  .dia-calendario,
-  .dia-vacio {
-    min-height: 65px;
-  }
-
-  .dia-calendario strong {
-    font-size: 14px;
-  }
-
-  .dia-calendario span {
-    display: none;
-  }
-
-  .calendario-semana span {
-    padding: 7px 2px;
-    font-size: 8px;
-  }
-
-  .calendario-header h3 {
-    font-size: 16px;
-  }
-
-  .calendario-flecha {
-    width: 36px;
-    height: 36px;
-    font-size: 22px;
-  }
-
-  .horarios-dia {
-    gap: 2px;
-  }
-
-  .hora-disponible,
-  .hora-ocupada {
-    min-width: 31px;
-    min-height: 18px;
-    padding: 2px 3px;
-    font-size: 6px;
+  .horario-boton {
+    min-height: 58px;
   }
 }

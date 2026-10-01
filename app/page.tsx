@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import Servicios from "../components/Servicios";
@@ -31,7 +32,7 @@ export default function Page() {
       <Navbar cambiarVista={cambiarVista} />
 
       {vista === "inicio" && (
-        <>
+        <main className="inicio">
           <Hero cambiarVista={cambiarVista} />
 
           <div className="inicio-accesos">
@@ -91,7 +92,7 @@ export default function Page() {
           <Cortes cambiarVista={cambiarVista} />
 
           <Ubicacion cambiarVista={cambiarVista} />
-        </>
+        </main>
       )}
 
       {vista === "servicios" && (

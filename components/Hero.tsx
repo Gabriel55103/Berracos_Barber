@@ -67,12 +67,7 @@ export default function Hero({ cambiarVista }: HeroProps) {
             BARBEROS
           </button>
 
-          <button
-            type="button"
-            onClick={() => cambiarVista("cortes")}
-          >
-            CORTES
-          </button>
+        
 
           <button
             type="button"
